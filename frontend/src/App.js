@@ -22,6 +22,7 @@ function App() {
       .catch(err => {
         console.log(`Following error occured: ${err}`);
       });
+    setSearchString('');
   };
 
   return (
