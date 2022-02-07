@@ -9,6 +9,9 @@ import Search from "./components/Search"
 function App() {
   const [searchString, setSearchString] = useState('');
 
+  const UNSPLASH_ACCESS_KEY = process.key.REACT_APP_UNSPLASH_ACCESS_KEY;
+  const UNSPLASH_SECRET_KEY = process.key.REACT_APP_UNSPLASH_SECRET_KEY;
+
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log(searchString);
