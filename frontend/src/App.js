@@ -30,6 +30,10 @@ function App() {
     setSearchString('');
   };
 
+  const handleDelete = (id) => {
+    setImages(images.filter((image) => image.id !== id));
+  };
+
   return (
     <div>
       <Header title="Images Gallery" />
@@ -42,7 +46,7 @@ function App() {
         <Row xs={1} md={2} lg={3}>
           {images.map((image, index) => (
             <Col key={index} className="pb-3">
-              <ImageCard image={image} />
+              <ImageCard image={image} deleteImage={handleDelete} />
             </Col>
           ))}
         </Row>
