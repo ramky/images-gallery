@@ -4,12 +4,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/Header';
 import Search from './components/Search';
+import ImageCard from './components/ImageCard';
 
 const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
 const UNSPLASH_API_URL = 'https://api.unsplash.com';
 
 function App() {
   const [searchString, setSearchString] = useState('');
+  const [images, setImages] = useState([]);
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ function App() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setImages([{ ...data, title: searchString }, ...images]);
       })
       .catch((err) => {
         console.log(`Following error occured: ${err}`);
@@ -35,6 +37,7 @@ function App() {
         setSearchString={setSearchString}
         handleSubmit={handleSearchSubmit}
       />
+      {!!images.length && <ImageCard image={images[0]} />}
     </div>
   );
 }
