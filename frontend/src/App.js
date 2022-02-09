@@ -37,7 +37,9 @@ function App() {
         setSearchString={setSearchString}
         handleSubmit={handleSearchSubmit}
       />
-      {!!images.length && <ImageCard image={images[0]} />}
+      {images.map((image, index) => (
+        <ImageCard image={image} />
+      ))}
     </div>
   );
 }
