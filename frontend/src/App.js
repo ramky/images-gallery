@@ -38,7 +38,7 @@ function App() {
         handleSubmit={handleSearchSubmit}
       />
       {images.map((image, index) => (
-        <ImageCard image={image} />
+        <ImageCard key={index} image={image} />
       ))}
     </div>
   );
