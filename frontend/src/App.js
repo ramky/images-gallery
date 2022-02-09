@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,9 +38,15 @@ function App() {
         setSearchString={setSearchString}
         handleSubmit={handleSearchSubmit}
       />
-      {images.map((image, index) => (
-        <ImageCard key={index} image={image} />
-      ))}
+      <Container className="mt-4">
+        <Row xs={1} md={2} lg={3}>
+          {images.map((image, index) => (
+            <Col key={index} className="pb-3">
+              <ImageCard image={image} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </div>
   );
 }
