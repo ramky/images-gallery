@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
 import Search from './components/Search';
 import ImageCard from './components/ImageCard';
+import Welcome from './components/Welcome';
 
 const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
 const UNSPLASH_API_URL = 'https://api.unsplash.com';
@@ -43,13 +44,17 @@ function App() {
         handleSubmit={handleSearchSubmit}
       />
       <Container className="mt-4">
-        <Row xs={1} md={2} lg={3}>
-          {images.map((image, index) => (
-            <Col key={index} className="pb-3">
-              <ImageCard image={image} deleteImage={handleDelete} />
-            </Col>
-          ))}
-        </Row>
+        {images.length ? (
+          <Row xs={1} md={2} lg={3}>
+            {images.map((image, index) => (
+              <Col key={index} className="pb-3">
+                <ImageCard image={image} deleteImage={handleDelete} />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <Welcome />
+        )}
       </Container>
     </div>
   );
