@@ -7,6 +7,9 @@ UNSPASH_URL = "https://api.unsplash.com/photos/random"
 load_dotenv(dotenv_path="./.env.local")
 UNSPLASH_KEY = os.environ.get("REACT_APP_UNSPLASH_ACCESS_KEY", "")
 
+if not UNSPLASH_KEY:
+    raise EnvironmentError("Mising UNSPLASH API KEY required for API call")
+
 app = Flask(__name__)
 
 
