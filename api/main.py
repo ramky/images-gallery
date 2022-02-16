@@ -6,11 +6,13 @@ import requests
 UNSPASH_URL = "https://api.unsplash.com/photos/random"
 load_dotenv(dotenv_path="./.env.local")
 UNSPLASH_KEY = os.environ.get("REACT_APP_UNSPLASH_ACCESS_KEY", "")
+DEBUG = bool(os.environ.get("FLASK_DEBUG", True))
 
 if not UNSPLASH_KEY:
     raise EnvironmentError("Mising UNSPLASH API KEY required for API call")
 
 app = Flask(__name__)
+app.config["DEBUG"] = DEBUG
 
 
 @app.route("/new-image")
