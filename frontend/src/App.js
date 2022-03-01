@@ -8,8 +8,7 @@ import Search from './components/Search';
 import ImageCard from './components/ImageCard';
 import Welcome from './components/Welcome';
 
-const UNSPLASH_ACCESS_KEY = process.env.REACT_APP_UNSPLASH_ACCESS_KEY;
-const UNSPLASH_API_URL = 'https://api.unsplash.com';
+const API_URL = process.env.API_URL || 'http://localhost:5000';
 
 function App() {
   const [searchString, setSearchString] = useState('');
@@ -18,9 +17,7 @@ function App() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log(`Searching for ${searchString} via UNSPLASH API`);
-    fetch(
-      `${UNSPLASH_API_URL}/photos/random?query=${searchString}&client_id=${UNSPLASH_ACCESS_KEY}`
-    )
+    fetch(`${API_URL}/new-image?query=${searchString}`)
       .then((res) => res.json())
       .then((data) => {
         setImages([{ ...data, title: searchString }, ...images]);

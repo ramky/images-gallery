@@ -1,5 +1,6 @@
 from flask import Flask, request
 from dotenv import load_dotenv
+from flask_cors import CORS
 import os
 import requests
 
@@ -12,6 +13,7 @@ if not UNSPLASH_KEY:
     raise EnvironmentError("Mising UNSPLASH API KEY required for API call")
 
 app = Flask(__name__)
+CORS(app)
 app.config["DEBUG"] = DEBUG
 
 
